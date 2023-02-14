@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "rp-grids": "/components/grids/grids"
+  }
+}

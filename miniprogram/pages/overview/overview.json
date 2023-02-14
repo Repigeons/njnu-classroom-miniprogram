@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "rp-class-detail": "/components/class-detail/class-detail"
+  }
+}

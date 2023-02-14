@@ -1,0 +1,25 @@
+{
+  "name": "njnu-classroom-miniprogram",
+  "version": "4.0.0",
+  "description": "南师教室",
+  "keywords": [
+    "njnu-classroom",
+    "Nanjing Normal University"
+  ],
+  "license": "GPL-3.0 License",
+  "author": "Repigeons",
+  "contributors": [
+    "ZhouTianxing <zhoutianxing@repigeons.cn>",
+    "ZzDaniel <zzdaniel@repigeons.cn>"
+  ],
+  "repository": "github:Repigeons/njnu-classroom-miniprogram",
+  "homepage": "https://njnu-classroom.repigeons.cn/",
+  "bugs": "https://github.com/Repigeons/njnu-classroom-miniprogram/issues",
+  "scripts": {
+    "ytt": "npx ytt"
+  },
+  "devDependencies": {
+    "miniprogram-api-typings": "^3.9.0",
+    "yapi-to-typescript": "^3.36.0"
+  }
+}

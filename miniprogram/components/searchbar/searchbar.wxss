@@ -1,0 +1,62 @@
+/* miniprogram/components/searchbar/searchbar.wxss */
+.searchbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding: 0 8px;
+}
+
+.searchbar__box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  flex-grow: 1;
+  height: 100%;
+  padding: 0 8px;
+  border-radius: 16px;
+  background-color: #fff;
+}
+
+.icon-search {
+  left: 4px;
+}
+
+.searchbar__input {
+  position: relative;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 5px;
+  font-size: 14px;
+}
+
+.searchbar__input_flexfull {
+  flex-grow: 1;
+}
+
+.icon-clear {
+  position: absolute;
+  right: 10px;
+  z-index: 2;
+}
+
+.searchbar__label {
+  position: relative;
+  font-size: 16px;
+  color: #576B95;
+  margin: 0 4px 0 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+  /* DarkMode 下的样式 start */
+  .searchbar__box {
+    background-color: #191919;
+  }
+
+  .searchbar__label {
+    color: #576B95;
+  }
+  /* DarkMode 下的样式 end */
+}

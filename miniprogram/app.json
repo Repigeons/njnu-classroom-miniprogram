@@ -1,0 +1,64 @@
+{
+  "entryPagePath": "pages/index/index",
+  "pages": [
+    "pages/index/index",
+    "pages/empty/empty",
+    "pages/overview/overview",
+    "pages/explore/index/index"
+  ],
+  "subpackages": [
+    {
+      "root": "pages/explore/pages",
+      "pages": [
+        "search/search",
+        "shuttle/shuttle",
+        "map/map"
+      ]
+    }
+  ],
+  "window": {
+    "backgroundTextStyle": "@bgTxtStyle",
+    "navigationBarBackgroundColor": "@navBgColor",
+    "navigationBarTitleText": "南师教室",
+    "navigationBarTextStyle": "@navTxtStyle"
+  },
+  "tabBar": {
+    "color": "@tabFontColor",
+    "selectedColor": "@tabSelectedColor",
+    "backgroundColor": "@tabBgColor",
+    "borderStyle": "@tabBorderStyle",
+    "list": [
+      {
+        "pagePath": "pages/empty/empty",
+        "iconPath": "@iconPath1",
+        "selectedIconPath": "@selectedIconPath1",
+        "text": "空教室"
+      },
+      {
+        "pagePath": "pages/overview/overview",
+        "iconPath": "@iconPath2",
+        "selectedIconPath": "@selectedIconPath2",
+        "text": "教室概览"
+      },
+      {
+        "pagePath": "pages/explore/index/index",
+        "iconPath": "@iconPath3",
+        "selectedIconPath": "@selectedIconPath3",
+        "text": "发现"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于计算离你最近的教学楼"
+    }
+  },
+  "requiredPrivateInfos": [
+    "getLocation"
+  ],
+  "darkmode": true,
+  "themeLocation": "theme.json",
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

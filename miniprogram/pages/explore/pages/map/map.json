@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "rp-picker": "/components/scroll-picker/scroll-picker"
+  }
+}

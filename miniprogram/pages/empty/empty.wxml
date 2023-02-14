@@ -1,0 +1,44 @@
+<!--pages/empty/empty.wxml-->
+<view class="page" bindtouchstart="hideLayer">
+  <view class="rp-pickers">
+    <view class="rp-picker">
+      <rp-picker list="{{jxlArray}}" key="name" selected="{{jxlSelected}}" scroll="{{jxlScroll}}" bindchange="bindJxlChange" button="重新定位" bindbutton="dingwei" />
+    </view>
+    <view class="rp-picker">
+      <rp-picker list="{{rqArray}}" key="value" selected="{{rqSelected}}" scroll="{{rqScroll}}" bindchange="bindRqChange" button="当前日期" bindbutton="dangqianriqi" />
+    </view>
+    <view class="rp-picker">
+      <rp-picker
+      list="{{['第1节', '第2节', '第3节', '第4节', '第5节', '第6节', '第7节', '第8节', '第9节', '第10节', '第11节', '第12节']}}"
+      selected="{{jcSelected}}"
+      scroll="{{jcScroll}}"
+      bindchange="bindJcChange"
+      button="当前节次"
+      bindbutton="dangqianjieci" />
+    </view>
+  </view>
+
+  <view class="rp-result">
+    <scroll-view class="rp-result__scrollview" scroll-y scroll-with-animation>
+      <block wx:for="{{result}}" wx:key="id">
+        <rp-row zylxdm="{{item.zylxdm}}" jsmph="{{item.jsmph}}" skzws="{{item.skzws}}" jc-ks="{{item.jcKs}}" jc-js="{{item.jcJs}}" bindlongpress="showLayer" data-index="{{index}}" />
+      </block>
+      <view class="rp-result__desc">
+          共发现 {{result.length}} 条结果。如果发现某一条目与事实情况不符，可长按相应条目提交错误。
+      </view>
+      <view class="ad">
+        <ad unit-id="adunit-ae9ee773a5fe2e92"></ad>
+      </view>
+      <!-- feedback -->
+      <rp-layer id="layer" class="rp-layer" wx:if="{{layer_display}}"
+      buttons="{{layer_buttons}}" BackColor="#434343" ForeColor="#fff"
+      style="top:{{11 + layer_index * 50}}px" />
+      <rp-layer id="layer" class="rp-layer" wx:if="{{confirm_display}}"
+      buttons="{{confirm_buttons}}" BackColor="#434343" ForeColor="#fff"
+      style="top:{{11 + layer_index * 50}}px" />
+      <!-- feedback -->
+    </scroll-view>
+  </view>
+</view>
+
+<rp-notice/>

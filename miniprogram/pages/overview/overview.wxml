@@ -1,0 +1,75 @@
+<!--pages/overview/overview.wxml-->
+<view class="page">
+	<view class="page__bd">
+		<!-- 选择教室 -->
+		<view class="rp-search-bar">
+			<view class="rp-label" bindtap="bindFormer">
+				<image src="/images/former.png" class="image" />
+			</view>
+			<view class="rp-picker">
+				<picker mode="multiSelector" range="{{[jxlmcList, jsmphList[jxlSelected]]}}"
+					value="{{[jxlSelected, jasSelected]}}" bindcolumnchange="onPickerChange"
+					bindcancel="onPickerCancel" bindchange="submit">
+					<view class="rp-bd_text">{{jxlmcList[jxlSelectedBackup]}}</view>
+					<view class="rp-bd_text">{{jsmphList[jxlSelectedBackup][jasSelectedBackup]}}</view>
+				</picker>
+			</view>
+			<view class="rp-label" bindtap="bindLatter">
+				<image src="/images/latter.png" class="image" />
+			</view>
+		</view>
+		<!--~ 选择教室 -->
+
+		<!-- 概览界面 -->
+		<view class="rp-outerborder"
+			style="top:{{cell.top}}px; left:{{cell.left}}px; height:{{(cell.height+1)*13-1}}px; width:{{(cell.width+1)*8-1}}px">
+			<!-- 左上角：空/非空教室 -->
+			<view wx:if="{{emptyNow}}" class="title" style="height:{{cell.height}}px; width:{{cell.width}}px">
+				<image src="/images/yes.png" class="image" />
+			</view>
+			<view wx:else class="title" style="height:{{cell.height}}px; width:{{cell.width}}px">
+				<image src="/images/no.png" class="image" />
+			</view>
+			<!--~ 左上角：空/非空教室 -->
+
+			<!-- 上方：周一~周五 -->
+			<block wx:for="一二三四五六日" wx:key="key">
+				<view class="title {{today==(index+1)%7 ? 'highlight_cell' : ''}}"
+					style="left:{{(cell.width+1)*(index+1)}}px; height:{{cell.height}}px; width:{{cell.width}}px;">
+					<text class="xq" style="font-size:{{cell.height/3}}px">周{{item}}</text>
+				</view>
+			</block>
+			<!--~ 上方：周一~周五 -->
+
+			<!-- 左侧：1~12节课 -->
+			<block wx:for="{{12}}" wx:for-index="jc" wx:key="key">
+				<view class="title {{jc==dqjc ? 'highlight_cell' : ''}}"
+					style="top:{{(cell.height+1)*(jc+1)}}px; height:{{cell.height}}px; width:{{cell.width}}px; float:left;">
+					<text class="jc"
+						style="top: {{cell.height*.15}}px; font-size:{{cell.height*.4}}px; line-height:{{cell.height*.3}}px">{{jc+1}}</text>
+					<text class="time"
+						style="top: {{cell.height*.52}}px; font-size:{{cell.height*.2}}px; line-height:{{cell.height*.23}}px">{{timeArray[jc][0]}}\n{{timeArray[jc][1]}}</text>
+				</view>
+			</block>
+			<!--~ 左侧：1~12节课 -->
+
+			<!-- 数据内容 -->
+			<view class="rp-data"
+				style="top: {{cell.height+1}}px; left: {{cell.width+1}}px; height:{{(cell.height+1)*12}}px; width:{{(cell.width+1)*7}}px;">
+				<block wx:for="{{result}}" wx:key="key">
+					<view class="bar bar-{{item.usage}}" hover-class="bar-active" bindtap="showDialog" data-index="{{index}}"
+						style="width:{{cell.width*cell.ratio}}px; height:{{(cell.height+1)*(item.jcJs-item.jcKs+1)-1}}px; left: {{cell.width*(1-cell.ratio)*.5+(cell.width+1)*item.left-1}}px; top: {{(cell.height+1)*(item.jcKs-1)-1}}px; font-size:{{cell.width*cell.ratio/3}}px; line-height:{{cell.width*cell.ratio/3*1.3}}px">
+						<block wx:if="{{item.usage!='empty'}}">
+							<text>{{item.shortkcmc}}</text>
+						</block>
+					</view>
+				</block>
+			</view>
+			<!--~ 数据内容 -->
+		</view>
+		<!-- 概览界面 -->
+	</view>
+	<!--~ body -->
+</view>
+
+<rp-class-detail title="{{dialog.title}}" detail="{{dialog.detail}}"></rp-class-detail>

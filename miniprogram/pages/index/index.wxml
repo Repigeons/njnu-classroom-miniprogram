@@ -1,0 +1,8 @@
+<view wx:if="{{off}}" class="text">
+  <text decode="true">&ensp;</text>
+  本学期已经结束，南师教室也放假啦~~~
+  <text decode="true">&ensp;</text>
+</view>
+<view wx:else class="text"/>
+
+<ad-custom class="ad-custom" unit-id="adunit-a918f15c729909a6"></ad-custom>

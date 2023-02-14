@@ -1,0 +1,68 @@
+/* components/grids/grids.wxss */
+.grids {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.grid {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 10px;
+  height: 96px;
+  margin: 4px;
+}
+.grid-hover {
+  background-color: #cee6f2;
+}
+
+.grid__icon {
+  width: 28px;
+  height: 28px;
+  margin: 8px;
+}
+
+.grid__label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 14px;
+  height: 20px;
+  line-height: 20px;
+}
+
+.grid__cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+}
+
+.grid__button {
+  height: 100%;
+  padding: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  /* DarkMode 下的样式 start */
+  .grid {
+    background-color: #191919;
+  }
+
+  .grid-hover {
+    background-color: #cee6f2;
+  }
+
+  .grid__icon {
+  filter: invert(1);
+  }
+  /* DarkMode 下的样式 end */
+}

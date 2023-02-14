@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "校车时刻表",
+  "usingComponents": {
+    "rp-row": "/components/shuttle-row/shuttle-row"
+  }
+}

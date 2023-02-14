@@ -1,0 +1,13 @@
+<!--components/global/searchbar/searchbar.wxml-->
+<view class="searchbar">
+  <view class="searchbar__box" bindtap="onFocus">
+    <icon class="icon-search" type="search" size="16" color="rgba(0,0,0,.7)" />
+    <input class="searchbar__input {{value||focus ? 'searchbar__input_flexfull' : ''}}" confirm-type="search"
+      value="{{value}}" placeholder="{{placeholder}}"
+      bindinput="onInput" bindconfirm="onSearch" />
+    <icon class="icon-clear" type="cancel" size="16" color="rgba(0,0,0,.7)" wx:if="{{value}}" bindtap="clearInput" />
+  </view>
+  <label wx:if="{{focus}}" class="searchbar__label" bindtap="onSearch">
+    {{buttonText}}
+  </label>
+</view>

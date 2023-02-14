@@ -1,0 +1,40 @@
+<!--miniprogram/pages/explore/pages/search/search.wxml-->
+<view class="page">
+  <view class="rp-search">
+    <rp-searchbar placeholder="搜索课程/活动" focus="{{showSearch}}" value="{{keyword}}" bindfocus="onFocus" bindinput="onInput" bindsearch="submit" />
+    <view class="rp-search__pickers" wx:if="{{showSearch}}">
+      <view class="rp-search__picker">
+        <rp-picker list="{{jxlArray}}" key="value" selected="{{jxlSelected}}" bindchange="bindJxlChange" />
+      </view>
+      <view class="rp-search__picker">
+        <rp-picker list="{{rqArray}}" key="value" selected="{{rqSelected}}" bindchange="bindRqChange" />
+      </view>
+      <view class="rp-search__picker rp-search__picker_cells">
+        <rp-picker class="rp-search__picker_cell__bd" list="{{jcArray}}" selected="{{jcKsSelected}}" scroll="{{jcKsSelected}}" bindchange="bindJcChange" data-jc="jcKsSelected" />
+        <view class="rp-search__picker_cell__hd">至</view>
+        <rp-picker class="rp-search__picker_cell__bd" list="{{jcArray}}" selected="{{jcJsSelected}}" scroll="{{jcJsSelected}}" bindchange="bindJcChange" data-jc="jcJsSelected" />
+      </view>
+      <view class="rp-search__lastpicker">
+        <rp-picker list="{{zylxdmArray}}" key="value" selected="{{zylxdmSelected}}" bindchange="bindZylxChange" />
+      </view>
+    </view>
+  </view>
+
+  <view class="rp-tip" wx:if="{{!showResult}}">
+    <text>Tips：</text>
+    <text decode="true">
+      使用更多搜索，可以方便地根据课程或活动名称查到其所在的教室以及时间，支持通过筛选缩小搜索范围。点击上方搜索栏开始搜索。\n\n例1：基础英语\n例2：团日活动
+    </text>
+  </view>
+
+  <view class="rp-result" wx:if="{{showResult}}">
+    <scroll-view class="rp-result__scrollview" scroll-y bindscrolltolower="onReachBottom">
+      <view class="rp-tip">共发现 {{totalCount}} 条结果。</view>
+      <block wx:for="{{result}}" wx:key="key">
+        <rp-row zylxdm="{{item.zylxdm}}" title="{{item.title}}" text="{{item.jxlmc}}{{item.jsmph}}&emsp;{{rqMapper[item.weekday]}}{{item.jcKs}}-{{item.jcJs}}节" bindtap="showDialog" data-index="{{index}}" />
+      </block>
+    </scroll-view>
+  </view>
+</view>
+
+<rp-class-detail title="{{dialog.title}}" detail="{{dialog.detail}}"></rp-class-detail>

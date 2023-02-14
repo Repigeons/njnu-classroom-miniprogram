@@ -1,0 +1,19 @@
+/* pages/index/index.wxss */
+
+.ad-custom {
+  height: 90vh;
+  width: 100vw;
+  opacity: .7;
+}
+
+.text {
+  font-size: 35rpx;
+  line-height: 10vh;
+  height: 10vh;
+  width: 100vw;
+  text-align: center;
+  color: #fff;
+  background-color: #666;
+  text-decoration-line: underline;
+  text-underline-offset: 12rpx;
+}

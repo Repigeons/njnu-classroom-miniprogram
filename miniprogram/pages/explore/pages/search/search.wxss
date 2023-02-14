@@ -1,0 +1,91 @@
+/* miniprogram/pages/explore/pages/search/search.wxss */
+.rp-search {
+  margin: 8px 0;
+}
+
+.rp-search__pickers {
+  margin: 8px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.rp-search__picker {
+  margin-bottom: 1px;
+  background-color: #fff;
+}
+
+.rp-search__lastpicker{
+  background-color: #fff;
+}
+
+.rp-search__picker_cells {
+  display: flex;
+}
+
+.rp-search__picker_cell__hd {
+  width: 20px;
+  height: 44px;
+  line-height: 44px;
+  text-align: center;
+  margin: 0 4px;
+  z-index: 2;
+  font-weight: 400;
+}
+
+.rp-search__picker_cell__bd {
+  flex-grow: 1;
+  z-index: 1;
+}
+
+.rp-tip {
+  padding: 0 18px;
+  font-size: 14px;
+  line-height: 20px;
+  color: rgba(0,0,0,.5);
+}
+
+.rp-result {
+  position: absolute;
+  text-align: left;
+  top: 52px;
+  height: calc(100% - 52px);
+  width: 100%;
+}
+
+.rp-result__scrollview {
+  height: 100%;
+}
+
+.rp-result__desc {
+  padding: 0 16px 4px;
+  font-size: 14px;
+  color: rgba(0,0,0,.5);
+}
+
+.dialog-text {
+  text-align:left;
+}
+
+@media (prefers-color-scheme: dark) {
+  /* DarkMode 下的样式 start */
+  .rp-search__picker {
+    background-color: #191919;
+  }
+  
+  .rp-search__lastpicker{
+    background-color: #fff;
+  }
+  
+  .rp-tip {
+    color: rgba(255,255,255,.5);
+  }
+
+  .rp-result__desc {
+    color: rgba(0,0,0,.5);
+  }
+
+  .dialog-text {
+    color: #ffffff77;
+  }
+  /* DarkMode 下的样式 end */
+}

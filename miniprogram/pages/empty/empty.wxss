@@ -1,0 +1,42 @@
+/* pages/empty/empty.wxss */
+.rp-picker {
+  margin-bottom: 1px;
+}
+
+.rp-result {
+  position: absolute;
+  text-align: left;
+  top: 135px;
+  height: calc(100% - 135px);
+  width: 100%;
+}
+
+.rp-result__scrollview {
+  height: 100%;
+}
+
+.rp-result__desc {
+  padding: 0 16px 8px;
+  font-size: 14px;
+  line-height: 20px;
+  color: rgba(0,0,0,.5);
+}
+
+.rp-layer {
+  position:absolute;
+  right:16px;
+  opacity: .8;
+}
+
+.ad {
+  margin: 0 15px;
+  overflow: hidden;
+}
+
+@media (prefers-color-scheme: dark) {
+  /* DarkMode 下的样式 start */
+  .rp-result__desc {
+    color: rgba(255,255,255,.5);
+  }
+  /* DarkMode 下的样式 end */
+}
