@@ -12,7 +12,8 @@ Page({
       wx.reLaunch({
         url: '/pages/empty/empty'
       })
+    } else {
+      this.setData({ off: true })
     }
-    this.setData({ off: true })
   }
 })

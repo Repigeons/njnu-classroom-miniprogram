@@ -1,4 +1,4 @@
-import { GetCoreQueryBuildingsJsonResponse, GetExploreShuttleStationsJsonResponse } from "../../../../api"
+import { GetCoreQueryBuildingsJsonResponse, GetExploreShuttleStationsJsonResponse } from "../../../../api/index"
 import { cachedCoreQueryBuildingsJson, cachedExploreShuttleStationsJson } from "../../../../utils/cacheable"
 
 // pages/explore/pages/map/map.ts

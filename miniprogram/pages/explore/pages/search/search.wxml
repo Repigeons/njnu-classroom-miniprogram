@@ -33,6 +33,9 @@
       <block wx:for="{{result}}" wx:key="key">
         <rp-row zylxdm="{{item.zylxdm}}" title="{{item.title}}" text="{{item.jxlmc}}{{item.jsmph}}&emsp;{{rqMapper[item.weekday]}}{{item.jcKs}}-{{item.jcJs}}节" bindtap="showDialog" data-index="{{index}}" />
       </block>
+      <view class="ad">
+        <ad unit-id="adunit-b37834d7653eb889"></ad>
+      </view>
     </scroll-view>
   </view>
 </view>

@@ -66,6 +66,11 @@
   text-align:left;
 }
 
+.ad {
+  margin: 0 15px;
+  overflow: hidden;
+}
+
 @media (prefers-color-scheme: dark) {
   /* DarkMode 下的样式 start */
   .rp-search__picker {
