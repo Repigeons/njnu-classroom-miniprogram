@@ -12,9 +12,12 @@ export default function request<TResponseData>(
     const baseUrl = envVersion === 'release'
       ? payload.prodUrl
       : payload.devUrl
+      // : 'http://njnu-classroom.io'
 
     // 请求地址
     const url = `${baseUrl}${payload.path}`
+    const token = wx.getStorageSync('token')
+    const authorization = token ? `Bearer ${token}` : 'undefined'
 
     // 具体请求逻辑
     if (payload.hasFileData) {
@@ -23,6 +26,7 @@ export default function request<TResponseData>(
       wx.uploadFile({
         url, name, filePath,
         formData: payload.data,
+        header: { authorization },
         success(res) {
           if (res.statusCode >= 200 && res.statusCode < 300) {
             const resp = JSON.parse(res.data) as IJsonResponse
@@ -56,6 +60,7 @@ export default function request<TResponseData>(
         url,
         method: `${payload.method}` as unknown as undefined,
         data: payload.data,
+        header: { authorization },
         success(res) {
           if (res.statusCode >= 200 && res.statusCode < 300) {
             const resp = res.data as IJsonResponse

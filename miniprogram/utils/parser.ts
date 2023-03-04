@@ -89,7 +89,7 @@ export function parseKcm(zylxdm: string, kcm: string): ClassInfo | null {
 }
 
 export function classDetailItem2dialog(item: Record<string, any>): TimetableDetailDialog {
-  const weekday = weekdays.find(it => it.key == item.weekday)?.value
+  const weekday = weekdays.find(it => it.key === item.weekday)?.value
   const detail: Array<{
     field: string;
     value: string;
@@ -108,12 +108,25 @@ export function classDetailItem2dialog(item: Record<string, any>): TimetableDeta
   if (item.FZLS) detail.push({ field: '负责老师', value: item.FZLS })
   // if (item.LXDH) detail.push({ field: '联系电话', value: item.LXDH })
   if (item.jyytms) detail.push({ field: '借用说明', value: item.jyytms })
-  return { detail, title: item.title }
+  const remark: Record<string, any> = {}
+  detail.forEach(it => remark[it.field] = it.value)
+  const dto = {
+    remark,
+    title: item.title,
+    weekday: item.weekday,
+    jcKs: item.jcKs,
+    jcJs: item.jcJs,
+    place: `${item.jxlmc}${item.jsmph}`,
+    color: item.usage === 'empty'
+      ? '#ace5ac' : item.usage === 'class'
+        ? '#9ac8ed' : '#f2c7aa',
+  }
+  return { detail, title: item.title, dto }
 }
 
 export function parseTime(str: string): number {
   const arr = str.split(':')
-  if (arr.length != 2) {
+  if (arr.length !== 2) {
     return NaN
   }
   const time_arr = arr.map(s => +s)
@@ -124,4 +137,17 @@ export function parseTime(str: string): number {
     return NaN
   }
   return time_arr[0] * 60 + time_arr[1]
+}
+
+export function userFavoritesItem2dialog(item: Record<string, any>): TimetableDetailDialog {
+  const detail: Array<{
+    field: string;
+    value: string;
+  }> = [
+      { field: '地点', value: item.place }
+    ]
+  for (let field in item.remark) {
+    detail.push({ field, value: item.remark[field] })
+  }
+  return { detail, title: item.title, itemId: item.id }
 }

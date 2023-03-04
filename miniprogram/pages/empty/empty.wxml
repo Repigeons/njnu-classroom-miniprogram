@@ -27,7 +27,7 @@
           共发现 {{result.length}} 条结果。如果发现某一条目与事实情况不符，可长按相应条目提交错误。
       </view>
       <view class="ad">
-        <ad unit-id="adunit-994e5d0c83e0fba7"></ad>
+        <ad unit-id="adunit-994e5d0c83e0fba7"/>
       </view>
       <!-- feedback -->
       <rp-layer id="layer" class="rp-layer" wx:if="{{layer_display}}"

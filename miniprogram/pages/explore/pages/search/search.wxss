@@ -71,6 +71,13 @@
   overflow: hidden;
 }
 
+.ad-bottom {
+  position: absolute;
+  width: 710rpx;
+  margin: 20rpx;
+  bottom: 0;
+}
+
 @media (prefers-color-scheme: dark) {
   /* DarkMode 下的样式 start */
   .rp-search__picker {

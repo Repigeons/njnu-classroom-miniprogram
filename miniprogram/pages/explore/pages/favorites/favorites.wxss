@@ -1,5 +1,5 @@
-/* pages/overview/overview.wxss */
-.rp-search-bar {
+/* pages/explore/pages/favorites/favorites.wxss */
+.rp-header {
   margin: 8px 8px 0 8px;
   position: relative;
   display: flex;
@@ -10,22 +10,18 @@
   border-radius: 16px;
 }
 
-.rp-label {
-  width: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.rp-header>text {
+  width: 100%;
+  text-align: center;
 }
-
-.rp-label .image {
-  height: 16px;
-  width: 10px;
-}
-
-.rp-picker {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.rp-header>navigator{
+  position: absolute;
+  text-align: center;
+  width: 60px;
+  right: 40px;
+  height: 40px;
+  font-size: 35px;
+  background-color: #fee;
 }
 
 .rp-bd_text {
@@ -39,7 +35,7 @@
 .rp-outerborder {
   position: absolute;
   border-radius: 16px;
-  background-color: #ffffff;
+  background-color:#ffffff;
   z-index: -1;
   overflow: hidden;
   border: 1px solid #ffffff;
@@ -47,7 +43,7 @@
 
 .rp-outerborder .title {
   position: absolute;
-  background-color: #e5e5e5;
+  background-color:#e5e5e5;
   margin-bottom: 1px;
   margin-right: 1px;
   display: flex;
@@ -61,21 +57,21 @@
   width: 20px;
 }
 
-.rp-outerborder .title .jc {
-  position: absolute;
-  font-weight: 600;
-  color: #000
+.rp-outerborder .title .jc{
+  position:absolute;
+  font-weight:600;
+  color:#000
 }
 
-.rp-outerborder .title .time {
-  position: absolute;
-  letter-spacing: 1;
-  color: #535353;
+.rp-outerborder .title .time{
+  position:absolute;
+  letter-spacing:1;
+  color:#535353;
 }
 
-.rp-outerborder .title .xq {
-  font-weight: 600;
-  color: #000
+.rp-outerborder .title .xq{
+  font-weight:600;
+  color:#000
 }
 
 .rp-outerborder .highlight_cell {
@@ -83,8 +79,8 @@
   background-color: #c9c9c9;
 }
 
-.rp-data {
-  position: absolute;
+.rp-data{
+  position:absolute;
   background-color: #e5e5e5;
   z-index: 1
 }
@@ -98,21 +94,9 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  word-break: break-all;
+  word-break:break-all;
   color: #000000;
   border: 1px solid #ffffff;
-}
-
-.rp-data>.bar-empty {
-  background-color: #ace5ac;
-}
-
-.rp-data>.bar-class {
-  background-color: #9ac8ed;
-}
-
-.rp-data>.bar-others {
-  background-color: #f2c7aa;
 }
 
 .rp-data>.bar-active {
@@ -121,7 +105,6 @@
 }
 
 @media (prefers-color-scheme: dark) {
-
   /* DarkMode 下的样式 start */
   .rp-search-bar {
     background-color: #191919;
@@ -132,46 +115,45 @@
   }
 
   .rp-outerborder {
-    background-color: #000000;
+    background-color:#000000;
     border: 1px solid #000000;
   }
-
+  
   .rp-outerborder .title {
-    background-color: #191919;
+    background-color:#191919;
   }
 
-  .rp-outerborder .title .jc {
-    color: #ffffff77
+  .rp-outerborder .title .jc{
+    color:#ffffff77
   }
-
-  .rp-outerborder .title .xq {
-    color: #ffffff88
+  
+  .rp-outerborder .title .xq{
+    color:#ffffff88
   }
-
+  
   .rp-outerborder .highlight_cell {
     background-color: #ffffff77;
   }
-
-  .rp-data {
+  
+  .rp-data{
     background-color: #1e1e1e;
   }
-
+  
   .rp-data .bar {
     color: #000000;
     border: 1px solid #000000;
   }
-
+  
   .rp-data .empty {
-    background-color: #80A780;
+    background-color:#80A780;
   }
-
+  
   .rp-data .class {
-    background-color: #7393AD;
+    background-color:#7393AD;
   }
 
   .dialog-text {
     color: #ffffff77;
   }
-
   /* DarkMode 下的样式 end */
 }

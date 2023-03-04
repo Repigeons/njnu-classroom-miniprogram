@@ -77,15 +77,15 @@ interface TimetableBar extends Record<string, any> {
   /**
    * 教学楼名称
    */
-  readonly jxlmc: string
+  readonly jxlmc?: string
   /**
    * 教室门牌号
    */
-  readonly jsmph: string
+  readonly jsmph?: string
   /**
    * 上课座位数
    */
-  readonly skzws: number
+  readonly skzws?: number
   /**
    * 星期几
    */
@@ -101,15 +101,19 @@ interface TimetableBar extends Record<string, any> {
   /**
    * 资源类型代码
    */
-  readonly zylxdm: '00' | '01' | '02' | '04' | '05' | '10'
+  readonly zylxdm?: '00' | '01' | '02' | '04' | '05' | '10'
   /**
    * 借用用途说明
    */
-  readonly jyytms: string
+  readonly jyytms?: string
   /**
    * 课程名
    */
-  readonly kcm: string
+  readonly kcm?: string
+  /**
+   * 标题
+   */
+  title?: string
   /**
    * 用途
    */

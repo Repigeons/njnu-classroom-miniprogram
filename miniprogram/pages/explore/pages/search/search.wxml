@@ -34,9 +34,13 @@
         <rp-row zylxdm="{{item.zylxdm}}" title="{{item.title}}" text="{{item.jxlmc}}{{item.jsmph}}&emsp;{{rqMapper[item.weekday]}}{{item.jcKs}}-{{item.jcJs}}节" bindtap="showDialog" data-index="{{index}}" />
       </block>
       <view class="ad">
-        <ad unit-id="adunit-b37834d7653eb889"></ad>
+        <ad unit-id="adunit-b37834d7653eb889"/>
       </view>
     </scroll-view>
+  </view>
+  <view class="ad-bottom" wx:if="{{!showResult}}">
+    <ad wx:if="{{showSearch}}" unit-id="adunit-b37834d7653eb889" />
+    <ad wx:else unit-id="adunit-b37834d7653eb889" />
   </view>
 </view>
 

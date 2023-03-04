@@ -2,5 +2,7 @@
 
 interface IAppOption {
   globalData: {
-  }
+  },
+  login: () => Promise<void>,
+  clearStorage: () => Promise<void>,
 }

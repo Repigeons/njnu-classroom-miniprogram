@@ -62,7 +62,7 @@ Page({
         stations.sort((a, b) => a.number - b.number)
         const name2Number: Record<string, number> = Object()
         stations.forEach(v => name2Number[v.name] = v.number)
-        this.setData({ stations, name2Number, station_selected: stations.findIndex(v => v.name != v.rangeKey) })
+        this.setData({ stations, name2Number, station_selected: stations.findIndex(v => v.name !== v.rangeKey) })
         this.bindWeekChange({ detail: { value: (new Date().getDay() + 6) % 7 } })
       },
       fail: console.error

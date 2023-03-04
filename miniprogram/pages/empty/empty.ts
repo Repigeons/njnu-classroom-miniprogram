@@ -158,7 +158,7 @@ Page({
         weekday: this.data.rqArray[this.data.rqSelected].key,
         jc: `${this.data.jcSelected + 1}`,
       })
-      console.debug("empty.json", result)
+      console.debug("empty", result)
       this.setData({ result })
     } catch {
       this.setData({ result: [] })
@@ -172,7 +172,7 @@ Page({
     this.setData({ confirm_display: false })
     const rq = (new Date().getDay() + 6) % 7
     const jc = getJc(new Date())
-    if (this.data.rqSelected != rq || this.data.jcSelected != jc) {
+    if (this.data.rqSelected !== rq || this.data.jcSelected !== jc) {
       wx.showToast({
         title: '未选择当前星期或节次',
         icon: 'none'

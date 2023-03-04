@@ -26,7 +26,7 @@ Component({
     onButton(e: WechatMiniprogram.CustomEvent) {
       const index = +e.target.dataset.index
       const button = this.properties.buttons[index]
-      if (typeof button.tap == 'function') {
+      if (typeof button.tap === 'function') {
         button.tap(e)
       } else {
         console.warn(`Button ["${button.text}"] does not have a method on handler "tap"`)

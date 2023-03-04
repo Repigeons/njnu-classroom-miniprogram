@@ -7,7 +7,7 @@ interface IButton extends IComponent {
   readonly text: string,
 }
 
-class TimetableDetailDialog {
+interface TimetableDetailDialog extends Record<string, any> {
   readonly title: any
   readonly detail: Array<{
     readonly field: string

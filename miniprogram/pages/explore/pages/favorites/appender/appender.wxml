@@ -1,0 +1,35 @@
+<!--pages/explore/pages/favorites/appender/appender.wxml-->
+<view class="body">
+  <view class="field">
+    <label>时间：</label>
+    <picker class="time-picker" mode="multiSelector" range="{{[dayArray, jcArray, jcArray]}}" range-key="label" value="{{[daySelected, jcKs, jcJs]}}" bindchange="bindRangeChange">
+      {{dayArray[daySelected].label}} 第{{jcKs+1}}节 至 第{{jcJs+1}}节
+    </picker>
+  </view>
+  <view class="field">
+    <label>地点：（不超过8个字）</label>
+    <input value="{{place}}" bindinput="bindinput" data-field="place" data-limit="8" />
+  </view>
+  <view class="field">
+    <label>名称：（不超过8个字）</label>
+    <input value="{{name}}" bindinput="bindinput" data-field="name" data-limit="8" />
+  </view>
+  <view class="field">
+    <label>以下为自定义备注：</label>
+    <text>（备注名称不超过4个字，备注内容不超过8个字）</text>
+    <button bindtap="bindAddField">添加备注项</button>
+  </view>
+  <view class="remark" wx:for="{{remark}}" wx:key="key">
+    <input class="remark-field" placeholder="备注名称" value="{{remark[index].field}}" bindinput="bindinput" data-field="remark[{{index}}].field" data-limit="4" />
+    <input class="remark-value" placeholder="备注内容" value="{{remark[index].value}}" bindinput="bindinput" data-field="remark[{{index}}].value" data-limit="8" />
+    <view class="remark-delete" bindtap="bindDelField" data-index="{{index}}">删除</view>
+  </view>
+  <button bindtap="bindSave">保存</button>
+  <view class="field"></view>
+  <view class="field">
+    <text style="padding: 5px; background-color: {{colorArrar[colorSelected]}}">选择颜色：</text>
+  </view>
+  <view class="colorBlock">
+    <view wx:for="{{colorArrar}}" style="background-color: {{colorArrar[index]}}" bindtap="bindSelectColor" data-index="{{index}}"></view>
+  </view>
+</view>

@@ -3,7 +3,6 @@ import { cachedCoreQueryClassroomsJson } from '../../utils/cacheable'
 import { parseKcm, classDetailItem2dialog } from '../../utils/parser'
 import { getJc } from '../../utils/util'
 import { GetCoreQueryClassroomsJsonResponse, getCoreQueryOverview } from '../../api/index'
-import { weekdays } from '../../utils/constant'
 
 Page({
   data: {
@@ -23,10 +22,10 @@ Page({
       top: 56,
       ratio: .8,
     },
-    emptyNow: true,
+    idle: true,
     // 周日->0
     today: new Date().getDay(),
-    dqjc: 1,
+    dqjc: 0,
     timeArray: [
       ['08:00', '08:40'], ['08:45', '09:25'], ['09:40', '10:20'], ['10:35', '11:15'], ['11:20', '12:00'],
       ['13:30', '14:10'], ['14:15', '14:55'], ['15:10', '15:50'], ['15:55', '16:35'],
@@ -34,7 +33,7 @@ Page({
     ],
     // 结果集
     result: Array<TimetableBar>(),
-    dialog: Object() as TimetableDetailDialog
+    dialog: { title: '', detail: [], dto: null } as TimetableDetailDialog
   },
   /**
    * 生命周期函数--监听页面加载
@@ -46,6 +45,7 @@ Page({
     this.setData({
       'cell.height': cellHeight,
       'cell.width': cellWidth,
+      dqjc: getJc(new Date()),
     })
     this.preloadInfo().then(() => {
       //
@@ -64,7 +64,6 @@ Page({
       classrooms: classrooms,
       jxlmcList: classrooms.map(jxl => jxl.jxlmc),
       jsmphList: classrooms.map(jxl => jxl.list.map(jas => jas.jsmph)),
-      dqjc: getJc(new Date()),
     })
   },
   /**
@@ -189,9 +188,8 @@ Page({
       key: 'latestOverview',
       data: jas
     })
-    const resp = await getCoreQueryOverview({ jasdm: jas.jasdm })
-    console.debug("overview.json", resp)
-    const result = resp as Array<TimetableBar>
+    const result = await getCoreQueryOverview({ jasdm: jas.jasdm }) as Array<TimetableBar>
+    console.debug("overview", result)
     let kcmclimit = 0
     const dayMapper: Record<string, number> = {
       'Mon': 0,
@@ -219,16 +217,17 @@ Page({
       if (dayMapper[item.weekday] + 1 === this.data.today) {
         if (item.jcKs <= this.data.dqjc + 1)
           if (item.jcJs >= this.data.dqjc + 1)
-            this.setData({ emptyNow: item.zylxdm === '00' })
+            this.setData({ idle: item.zylxdm === '00' })
       }
       item.left = dayMapper[item.weekday]
-      const info = parseKcm(item.zylxdm, item.kcm)
+      const info = parseKcm(item.zylxdm as string, item.kcm as string)
       if (info === null) continue
       for (const k in info) {
         item[k] = info[k]
       }
       kcmclimit = (this.data.cell.height * (item.jcJs - item.jcKs + 1)) / (this.data.cell.width * this.data.cell.ratio / 3 * 1.3) * 3
-      item.shortkcmc = item.title.length > kcmclimit ? item.title.substring(0, kcmclimit - 3) + '...' : item.title
+      const title = item.title as string
+      item.shortkcmc = title.length > kcmclimit ? title.substring(0, kcmclimit - 3) + '...' : item.title
     }
     this.setData({ result })
   },
@@ -239,7 +238,9 @@ Page({
   showDialog(e: WechatMiniprogram.CustomEvent) {
     const index: number = e.currentTarget.dataset.index
     const item = this.data.result[index]
-    this.setData({ dialog: classDetailItem2dialog(item) })
+    if (item.usage !== 'empty') {
+      this.setData({ dialog: classDetailItem2dialog(item) })
+    }
   },
 
   onShareAppMessage() {

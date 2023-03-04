@@ -12,7 +12,9 @@
       "pages": [
         "search/search",
         "shuttle/shuttle",
-        "map/map"
+        "favorites/favorites",
+        "map/map",
+        "favorites/appender/appender"
       ]
     }
   ],
