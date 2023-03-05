@@ -24,7 +24,7 @@ Page({
     ],
     // 结果集
     result: Array<TimetableBar>(),
-    dialog: { title: '', detail: [] } as TimetableDetailDialog
+    dialog: { title: '', detail: [], itemId: 0 } as TimetableDetailDialog
   },
   /**
    * 生命周期函数--监听页面加载
@@ -40,19 +40,12 @@ Page({
     })
   },
 
-  onShow() {
-    this.submit()
-  },
-
   /**
-   * 查询该教室概览
+   * 查询用户收藏
    */
-  async submit() {
+  async onShow() {
     const result = await getExploreUserFavorites() as Array<TimetableBar>
     console.debug('favorites', result)
-    // const resp = await getExploreUserTimetable({ jasdm: jas.jasdm })
-    // console.debug("overview.json", resp)
-    // const result = resp as Array<TimetableBar>
     let kcmclimit = 0
     const dayMapper: Record<string, number> = {
       'Mon': 0,

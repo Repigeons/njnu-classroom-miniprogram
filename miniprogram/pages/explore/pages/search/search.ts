@@ -29,7 +29,7 @@ Page({
     pageCount: -1,
     totalCount: 0,
     result: Array(),
-    dialog: Object() as TimetableDetailDialog
+    dialog: { title: '', detail: [], dto: null } as TimetableDetailDialog
   },
 
   /**

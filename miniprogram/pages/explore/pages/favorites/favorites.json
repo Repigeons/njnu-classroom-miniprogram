@@ -1,5 +1,5 @@
 {
   "usingComponents": {
-    "rp-class-detail": "/components/favorite-detail/favorite-detail"
+    "rp-favorite-detail": "/components/favorite-detail/favorite-detail"
   }
 }

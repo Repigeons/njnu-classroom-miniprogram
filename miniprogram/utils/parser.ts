@@ -90,13 +90,14 @@ export function parseKcm(zylxdm: string, kcm: string): ClassInfo | null {
 
 export function classDetailItem2dialog(item: Record<string, any>): TimetableDetailDialog {
   const weekday = weekdays.find(it => it.key === item.weekday)?.value
+  const jsmp = { field: '教室门牌', value: `${item.jxlmc}${item.jsmph}` }
   const detail: Array<{
     field: string;
     value: string;
-  }> = [
-      { field: '教室门牌', value: `${item.jxlmc}${item.jsmph}` },
-      { field: '使用时间', value: `${weekday ? weekday : ''}${item.jcKs}-${item.jcJs}节` },
-    ]
+  }> = [{
+    field: item.usage === 'empty' ? '空闲时间' : '使用时间',
+    value: `${weekday ? weekday : ''}${item.jcKs}-${item.jcJs}节`
+  }]
   if (item.KCMC) detail.push({ field: '课程名称', value: item.KCMC })
   if (item.SKJS) detail.push({ field: '上课教师', value: item.SKJS })
   if (item.KKDW) detail.push({ field: '开课单位', value: item.KKDW })
@@ -121,6 +122,7 @@ export function classDetailItem2dialog(item: Record<string, any>): TimetableDeta
       ? '#ace5ac' : item.usage === 'class'
         ? '#9ac8ed' : '#f2c7aa',
   }
+  detail.unshift(jsmp)
   return { detail, title: item.title, dto }
 }
 
@@ -143,9 +145,9 @@ export function userFavoritesItem2dialog(item: Record<string, any>): TimetableDe
   const detail: Array<{
     field: string;
     value: string;
-  }> = [
-      { field: '地点', value: item.place }
-    ]
+  }> = [{
+    field: '地 点', value: item.place
+  }]
   for (let field in item.remark) {
     detail.push({ field, value: item.remark[field] })
   }

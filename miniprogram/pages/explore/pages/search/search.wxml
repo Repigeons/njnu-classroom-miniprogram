@@ -44,4 +44,4 @@
   </view>
 </view>
 
-<rp-class-detail title="{{dialog.title}}" detail="{{dialog.detail}}"></rp-class-detail>
+<rp-class-detail title="{{dialog.title}}" detail="{{dialog.detail}}" dto="{{dialog.dto}}"></rp-class-detail>

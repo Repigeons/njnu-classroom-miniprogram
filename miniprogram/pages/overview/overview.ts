@@ -205,6 +205,7 @@ Page({
       switch (item.zylxdm) {
         case '00':
           item.usage = 'empty'
+          item.title = ' '
           break;
         case '01':
         case '10':
@@ -238,9 +239,7 @@ Page({
   showDialog(e: WechatMiniprogram.CustomEvent) {
     const index: number = e.currentTarget.dataset.index
     const item = this.data.result[index]
-    if (item.usage !== 'empty') {
-      this.setData({ dialog: classDetailItem2dialog(item) })
-    }
+    this.setData({ dialog: classDetailItem2dialog(item) })
   },
 
   onShareAppMessage() {

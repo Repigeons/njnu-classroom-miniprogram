@@ -56,4 +56,4 @@
 	<!--~ body -->
 </view>
 
-<rp-class-detail title="{{dialog.title}}" detail="{{dialog.detail}}" itemId="{{dialog.itemId}}" bind:delete="submit"></rp-class-detail>
+<rp-favorite-detail title="{{dialog.title}}" detail="{{dialog.detail}}" itemId="{{dialog.itemId}}" bind:refresh="onShow"></rp-favorite-detail>

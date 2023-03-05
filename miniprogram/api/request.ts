@@ -49,7 +49,7 @@ export default function request<TResponseData>(
         },
         fail(err) {
           wx.showToast({
-            title: '请求失败',
+            title: '网络异常请重试',
             icon: 'error'
           })
           reject(err)
@@ -83,7 +83,7 @@ export default function request<TResponseData>(
         },
         fail(err) {
           wx.showToast({
-            title: '请求失败',
+            title: '网络异常请重试',
             icon: 'error'
           })
           reject(err)

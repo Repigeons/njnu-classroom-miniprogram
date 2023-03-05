@@ -38,8 +38,8 @@ Component({
               content: `是否确认删除 "${title}"`
             })
             if (res.confirm) {
-              deleteExploreUserFavorites({ id: itemId })
-              this.triggerEvent("delete")
+              await deleteExploreUserFavorites({ id: itemId })
+              this.triggerEvent("refresh")
             } else {
               this.setData({ title, detail })
             }

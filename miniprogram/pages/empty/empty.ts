@@ -2,8 +2,7 @@
 import { cachedCoreQueryBuildingsJson } from '../../utils/cacheable'
 import { getDistance, getJc } from '../../utils/util'
 import { weekdays } from '../../utils/constant'
-import { GetCoreQueryBuildingsJsonResponse, getCoreQueryEmptyClassroom, GetCoreQueryEmptyClassroomResponse } from '../../api/index'
-// import { getApiEmptyJson, GetApiEmptyJsonResponse, GetApiPositionJsonResponse, GetCoreQueryBuildingsJsonResponse, postApiEmptyFeedback } from '../../api/index'
+import { GetCoreQueryBuildingsJsonResponse, getCoreQueryEmptyClassroom, GetCoreQueryEmptyClassroomResponse, postCoreApiEmptyClassroomFeedback, postExploreUserFavorites } from '../../api/index'
 
 const feedbackInterval: number = 5000 // 间隔时间（毫秒）
 
@@ -38,7 +37,10 @@ Page({
     // 上报错误
     this.setData({
       layer_buttons: [{
-        text: '提交错误',
+        text: '加入收藏',
+        tap: this.addFavorites
+      }, {
+        text: '反馈错误',
         tap: () => this.setData({
           layer_display: false,
           confirm_display: true,
@@ -164,11 +166,32 @@ Page({
       this.setData({ result: [] })
     }
   },
+  /**
+   * 添加收藏
+   */
+  async addFavorites() {
+    this.hideLayer()
+    const jxlmc = this.data.jxlArray[this.data.jxlSelected].name
+    const weekday = this.data.rqArray[this.data.rqSelected].key
+    const item = this.data.result[this.data.layer_index]
+    const dto = {
+      title: ' ',
+      weekday: weekday as "Sun" | "Mon" | "Tue" | "Wed" | "Thu" | "Fri" | "Sat",
+      jcKs: item.jcKs,
+      jcJs: item.jcJs,
+      place: `${jxlmc}${item.jsmph}`,
+      color: '#ace5ac',
+      remark: {}
+    }
+    await postExploreUserFavorites(dto)
+    wx.showToast({ title: '添加收藏成功' })
+  },
 
   /**
-   *
+   * 反馈错误
    */
   async feedback() {
+    this.hideLayer()
     this.setData({ confirm_display: false })
     const rq = (new Date().getDay() + 6) % 7
     const jc = getJc(new Date())
@@ -195,7 +218,7 @@ Page({
       title: '发送中',
       icon: 'loading'
     })
-    await postApiEmptyFeedback({
+    await postCoreApiEmptyClassroomFeedback({
       jc: this.data.jcSelected + 1,
       results: this.data.result,
       index: this.data.layer_index,
