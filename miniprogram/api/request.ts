@@ -27,6 +27,7 @@ export default function request<TResponseData>(
         url, name, filePath,
         formData: payload.data,
         header: { authorization },
+        timeout: 10000,
         success(res) {
           if (res.statusCode >= 200 && res.statusCode < 300) {
             const resp = JSON.parse(res.data) as IJsonResponse
@@ -61,6 +62,7 @@ export default function request<TResponseData>(
         method: `${payload.method}` as unknown as undefined,
         data: payload.data,
         header: { authorization },
+        timeout: 10000,
         success(res) {
           if (res.statusCode >= 200 && res.statusCode < 300) {
             const resp = res.data as IJsonResponse
