@@ -29,7 +29,11 @@ Page({
   onTapGrids(e: WechatMiniprogram.CustomEvent) {
     const methods: Record<string, () => void> = {
       developing: () => wx.showToast({ title: "敬请期待", icon: 'none' }),
-      calendar: () => wx.previewImage({ urls: ['https://cdn.repigeons.cn/blob/njnu_calendar_2022.jpg'], fail: console.error }),
+      calendar: () => {
+        const fullYear = new Date().getFullYear()
+        const urls = [fullYear -1, fullYear, fullYear + 1].map(year => `https://cdn.repigeons.cn/njnu-classroom/njnu_calendar_${year}.jpg`)
+        wx.previewImage({ urls, fail: console.error })
+      },
       support: () => interstitialAd?.show().catch(console.error),
     }
     const method = methods[e.detail.method]
