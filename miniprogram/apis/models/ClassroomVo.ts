@@ -18,7 +18,7 @@ import {
     ClassroomItemVoFromJSON,
     ClassroomItemVoFromJSONTyped,
     ClassroomItemVoToJSON,
-} from './';
+} from './index';
 
 /**
  * 教室信息

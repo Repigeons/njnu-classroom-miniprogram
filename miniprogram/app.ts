@@ -1,5 +1,5 @@
 // app.ts
-import { portalApi } from './apis'
+import { portalApi } from './apis/api'
 import {
   cachedCoreQueryClassroomsJson,
   cachedCoreQueryBuildingsJson,

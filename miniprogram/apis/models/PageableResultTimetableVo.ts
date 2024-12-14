@@ -18,7 +18,7 @@ import {
     TimetableVoFromJSON,
     TimetableVoFromJSONTyped,
     TimetableVoToJSON,
-} from './';
+} from './index';
 
 /**
  * 

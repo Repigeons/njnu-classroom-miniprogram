@@ -1,5 +1,5 @@
 // explore/index
-import { GridVo } from "../../../apis"
+import { GridVo } from "../../../apis/api"
 import { cachedExploreGridsJson } from "../../../utils/cacheable"
 let interstitialAd: WechatMiniprogram.InterstitialAd
 

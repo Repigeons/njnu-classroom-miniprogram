@@ -36,7 +36,7 @@ import {
     UserFavoritesVo,
     UserFavoritesVoFromJSON,
     UserFavoritesVoToJSON,
-    } from '../models';
+    } from '../models/index';
 
 export interface DeleteFavoritesRequest {
     id: string;

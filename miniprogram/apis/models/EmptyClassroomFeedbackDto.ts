@@ -18,7 +18,7 @@ import {
     EmptyClassroomVoFromJSON,
     EmptyClassroomVoFromJSONTyped,
     EmptyClassroomVoToJSON,
-} from './';
+} from './index';
 
 /**
  * 空教室反馈

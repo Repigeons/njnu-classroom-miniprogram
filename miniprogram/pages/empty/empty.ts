@@ -2,7 +2,7 @@
 import { cachedCoreQueryBuildingsJson } from '../../utils/cacheable'
 import { getDistance, getJc } from '../../utils/util'
 import { weekdays } from '../../utils/constant'
-import { coreApi, EmptyClassroomFeedbackDtoWeekdayEnum, EmptyClassroomVo, exploreApi, PositionVo, UserFavoritesDtoWeekdayEnum } from '../../apis'
+import { coreApi, EmptyClassroomFeedbackDtoWeekdayEnum, EmptyClassroomVo, exploreApi, PositionVo, UserFavoritesDtoWeekdayEnum } from '../../apis/api'
 
 const feedbackInterval: number = 5000 // 间隔时间（毫秒）
 

@@ -1,4 +1,4 @@
-import { exploreApi, UserFavoritesDtoWeekdayEnum } from "../../../../../apis"
+import { exploreApi, UserFavoritesDtoWeekdayEnum } from "../../../../../apis/api"
 
 // pages/explore/pages/favorites/appender/appender.ts
 Page({

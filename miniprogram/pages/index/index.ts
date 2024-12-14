@@ -1,4 +1,4 @@
-import { portalApi } from "../../apis"
+import { portalApi } from "../../apis/api"
 
 // pages/index/index.ts
 Page({

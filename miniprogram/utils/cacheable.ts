@@ -1,4 +1,4 @@
-import {coreApi, exploreApi} from '../apis'
+import {coreApi, exploreApi} from '../apis/api'
 /**
  * 数据缓存
  * @param func: 缓存结果的函数

@@ -1,5 +1,5 @@
 // overview
-import { ClassroomVo, coreApi } from '../../apis'
+import { ClassroomVo, coreApi } from '../../apis/api'
 import { cachedCoreQueryClassroomsJson } from '../../utils/cacheable'
 import { parseKcm, classDetailItem2dialog } from '../../utils/parser'
 import { getJc } from '../../utils/util'

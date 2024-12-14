@@ -1,6 +1,6 @@
 // components/class-detail/class-detail.ts
 
-import { exploreApi, UserFavoritesDto } from "../../apis"
+import { exploreApi, UserFavoritesDto } from "../../apis/api"
 
 Component({
   /**

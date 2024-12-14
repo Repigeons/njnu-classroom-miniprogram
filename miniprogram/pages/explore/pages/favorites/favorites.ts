@@ -1,5 +1,5 @@
 // favorites
-import { exploreApi } from '../../../../apis'
+import { exploreApi } from '../../../../apis/api'
 import { userFavoritesItem2dialog } from '../../../../utils/parser'
 import { getJc } from '../../../../utils/util'
 

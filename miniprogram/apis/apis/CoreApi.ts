@@ -33,7 +33,7 @@ import {
     TimetableVo,
     TimetableVoFromJSON,
     TimetableVoToJSON,
-    } from '../models';
+    } from '../models/index';
 
 export interface FeedbackEmptyClassroomRequest {
     emptyClassroomFeedbackDto?: EmptyClassroomFeedbackDto;
@@ -188,6 +188,7 @@ export class CoreApi extends runtime.BaseAPI {
      * 教室列表
      */
     async getClassroomList(): Promise<Array<ClassroomVo>> {
+        console.warn(this)
         const response = await this.getClassroomListRaw();
         return await response.value();
     }

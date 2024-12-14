@@ -1,4 +1,4 @@
-import { CoreApi, ExploreApi, PortalApi } from './apis'
+import { CoreApi, ExploreApi, PortalApi } from './apis/index'
 
 const BASE_URL = 'https://njnu-classroom.repigeons.cn'
 export const coreApi = new CoreApi(`${BASE_URL}/core`)

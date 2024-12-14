@@ -1,6 +1,6 @@
 // components/class-detail/class-detail.ts
 
-import { exploreApi } from "../../apis"
+import { exploreApi } from "../../apis/api"
 
 Component({
   /**

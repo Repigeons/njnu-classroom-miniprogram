@@ -24,7 +24,7 @@ import {
     SimpleDataVoBoolean,
     SimpleDataVoBooleanFromJSON,
     SimpleDataVoBooleanToJSON,
-    } from '../models';
+    } from '../models/index';
 
 export interface LoginRequest {
     code: string;

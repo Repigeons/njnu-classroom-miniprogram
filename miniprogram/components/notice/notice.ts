@@ -1,6 +1,6 @@
 // components/notice/notice.ts
 
-import { portalApi } from "../../apis"
+import { portalApi } from "../../apis/api"
 
 Component({
   /**
