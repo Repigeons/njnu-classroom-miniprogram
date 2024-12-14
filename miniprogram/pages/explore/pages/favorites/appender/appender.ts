@@ -1,4 +1,4 @@
-import { postExploreUserFavorites } from "../../../../../api/index"
+import { exploreApi, UserFavoritesDtoWeekdayEnum } from "../../../../../apis"
 
 // pages/explore/pages/favorites/appender/appender.ts
 Page({
@@ -7,13 +7,13 @@ Page({
    */
   data: {
     dayArray: [
-      { label: '周一', value: 'Mon' },
-      { label: '周二', value: 'Tue' },
-      { label: '周三', value: 'Wen' },
-      { label: '周四', value: 'Thu' },
-      { label: '周五', value: 'Fri' },
-      { label: '周六', value: 'Sat' },
-      { label: '周日', value: 'Sun' },
+      { label: '周一', value: 'MON' },
+      { label: '周二', value: 'TUE' },
+      { label: '周三', value: 'WED' },
+      { label: '周四', value: 'THT' },
+      { label: '周五', value: 'FRI' },
+      { label: '周六', value: 'SAT' },
+      { label: '周日', value: 'SUN' },
     ],
     daySelected: 0,
     jcArray: [
@@ -21,8 +21,8 @@ Page({
       { label: '第5节' }, { label: '第6节' }, { label: '第7节' }, { label: '第8节' },
       { label: '第9节' }, { label: '第10节' }, { label: '第11节' }, { label: '第12节' },
     ],
-    jcKs: 0,
-    jcJs: 0,
+    ksjc: 0,
+    jsjc: 0,
     name: '',
     place: '',
     remark: [{ field: '', value: '' }],
@@ -49,13 +49,13 @@ Page({
   },
 
   bindRangeChange(e: any) {
-    let [daySelected, jcKs, jcJs] = e.detail.value
-    if (jcKs > jcJs) {
-      const tmp = jcKs
-      jcKs = jcJs
-      jcJs = tmp
+    let [daySelected, ksjc, jsjc] = e.detail.value
+    if (ksjc > jsjc) {
+      const tmp = ksjc
+      ksjc = jsjc
+      jsjc = tmp
     }
-    this.setData({ daySelected, jcKs, jcJs })
+    this.setData({ daySelected, ksjc, jsjc })
   },
 
   bindAddField() {
@@ -79,11 +79,11 @@ Page({
   async bindSave() {
     const remark: Record<string, any> = {}
     this.data.remark.forEach(it => { if (it.field) remark[it.field] = it.value })
-    await postExploreUserFavorites({
+    await exploreApi.saveFavorites({
       title: this.data.name,
-      weekday: this.data.dayArray[this.data.daySelected].value as "Mon" | "Tue" | "Thu" | "Fri" | "Sat" | "Sun" | "Wed",
-      jcKs: this.data.jcKs + 1,
-      jcJs: this.data.jcJs + 1,
+      weekday: this.data.dayArray[this.data.daySelected].value as UserFavoritesDtoWeekdayEnum,
+      ksjc: this.data.ksjc + 1,
+      jsjc: this.data.jsjc + 1,
       place: this.data.place,
       color: this.data.colorArrar[this.data.colorSelected],
       remark,

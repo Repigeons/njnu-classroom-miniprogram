@@ -15,11 +15,8 @@
   "repository": "github:Repigeons/njnu-classroom-miniprogram",
   "homepage": "https://njnu-classroom.repigeons.cn/",
   "bugs": "https://github.com/Repigeons/njnu-classroom-miniprogram/issues",
-  "scripts": {
-    "ytt": "npx ytt"
-  },
   "devDependencies": {
-    "miniprogram-api-typings": "^3.9.0",
-    "yapi-to-typescript": "^3.36.0"
+    "miniprogram-api-typings": "^4.0.2",
+    "typescript": "^5.7.2"
   }
 }

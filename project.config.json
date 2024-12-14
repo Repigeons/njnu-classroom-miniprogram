@@ -21,7 +21,7 @@
     "autoAudits": false,
     "showShadowRootInWxmlPanel": true,
     "scopeDataCheck": false,
-    "uglifyFileName": true,
+    "uglifyFileName": false,
     "checkInvalidKey": true,
     "checkSiteMap": true,
     "uploadWithSourceMap": true,
@@ -51,17 +51,13 @@
     "useCompilerPlugins": [
       "typescript",
       "sass"
-    ]
+    ],
+    "condition": false
   },
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "appid": "wx42f3e578c5411a23",
   "condition": {},
-  "scripts": {
-    "beforeCompile": "npm run ytt",
-    "beforeUpload": "npm run ytt",
-    "beforePreview": "npm run ytt"
-  },
   "srcMiniprogramRoot": "miniprogram/",
   "editorSetting": {
     "tabIndent": "insertSpaces",

@@ -1,5 +1,6 @@
 // components/class-detail/class-detail.ts
-import { deleteExploreUserFavorites } from "../../api/index"
+
+import { exploreApi } from "../../apis"
 
 Component({
   /**
@@ -38,7 +39,7 @@ Component({
               content: `是否确认删除 "${title}"`
             })
             if (res.confirm) {
-              await deleteExploreUserFavorites({ id: itemId })
+              await exploreApi.deleteFavorites(itemId.toString())
               this.triggerEvent("refresh")
             } else {
               this.setData({ title, detail })

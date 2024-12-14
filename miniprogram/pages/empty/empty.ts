@@ -2,14 +2,14 @@
 import { cachedCoreQueryBuildingsJson } from '../../utils/cacheable'
 import { getDistance, getJc } from '../../utils/util'
 import { weekdays } from '../../utils/constant'
-import { GetCoreQueryBuildingsJsonResponse, getCoreQueryEmptyClassroom, GetCoreQueryEmptyClassroomResponse, postCoreApiEmptyClassroomFeedback, postExploreUserFavorites } from '../../api/index'
+import { coreApi, EmptyClassroomFeedbackDtoWeekdayEnum, EmptyClassroomVo, exploreApi, PositionVo, UserFavoritesDtoWeekdayEnum } from '../../apis'
 
 const feedbackInterval: number = 5000 // 间隔时间（毫秒）
 
 Page({
   data: {
     // 筛选
-    jxlArray: [] as GetCoreQueryBuildingsJsonResponse,
+    jxlArray: Array<PositionVo>(),
     jxlSelected: 0,
     jxlScroll: 0,
     rqArray: weekdays,
@@ -18,7 +18,7 @@ Page({
     jcSelected: 0,
     jcScroll: 0,
     // 结果
-    result: [] as GetCoreQueryEmptyClassroomResponse,
+    result: Array<EmptyClassroomVo>(),
     // 反馈
     layer_index: 0,
     layer_display: false,
@@ -89,8 +89,8 @@ Page({
     let minDistance: number = 0xffffffff
     this.data.jxlArray.forEach((jxl, index) => {
       const distance: number = getDistance({
-        latitude1: jxl.position[0],
-        longitude1: jxl.position[1],
+        latitude1: jxl.latitude,
+        longitude1: jxl.longitude,
         longitude2: res.longitude,
         latitude2: res.latitude,
       })
@@ -155,11 +155,11 @@ Page({
    */
   async submit() {
     try {
-      const result = await getCoreQueryEmptyClassroom({
-        jxlmc: this.data.jxlArray[this.data.jxlSelected].name,
-        weekday: this.data.rqArray[this.data.rqSelected].key,
-        jc: `${this.data.jcSelected + 1}`,
-      })
+      const result = await coreApi.getEmpty(
+        this.data.jxlArray[this.data.jxlSelected].name,
+        this.data.rqArray[this.data.rqSelected].key,
+        `${this.data.jcSelected + 1}`,
+      )
       console.debug("empty", result)
       this.setData({ result })
     } catch {
@@ -176,14 +176,14 @@ Page({
     const item = this.data.result[this.data.layer_index]
     const dto = {
       title: ' ',
-      weekday: weekday as "Sun" | "Mon" | "Tue" | "Wed" | "Thu" | "Fri" | "Sat",
-      jcKs: item.jcKs,
-      jcJs: item.jcJs,
+      weekday: weekday as UserFavoritesDtoWeekdayEnum,
+      ksjc: item.ksjc,
+      jsjc: item.jsjc,
       place: `${jxlmc}${item.jsmph}`,
       color: '#ace5ac',
       remark: {}
     }
-    await postExploreUserFavorites(dto)
+    await exploreApi.saveFavorites(dto)
     wx.showToast({ title: '添加收藏成功' })
   },
 
@@ -218,11 +218,11 @@ Page({
       title: '发送中',
       icon: 'loading'
     })
-    await postCoreApiEmptyClassroomFeedback({
+    await coreApi.feedbackEmptyClassroom({
       jc: this.data.jcSelected + 1,
       results: this.data.result,
       index: this.data.layer_index,
-      weekday: this.data.rqArray[this.data.rqSelected].key as "Sun" | "Mon" | "Tue" | "Wed" | "Thu" | "Fri" | "Sat",
+      weekday: this.data.rqArray[this.data.rqSelected].key as EmptyClassroomFeedbackDtoWeekdayEnum,
       jxlmc: this.data.jxlArray[this.data.jxlSelected].name,
     })
     wx.hideToast({

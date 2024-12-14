@@ -12,16 +12,16 @@ const navigatorDefault: IGridNavigator = {
   hoverStartTime: 50,
   hoverStayTime: 600,
   method: ''
-},
-  buttonDefault: IGridButton = {
-    openType: '',
-    sessionFrom: '',
-    sendMessageTitle: '',
-    sendMessagePath: '',
-    sendMessageImg: '',
-    appParameter: '',
-    showMessageCard: false,
-  }
+}
+const buttonDefault: IGridButton = {
+  openType: '',
+  sessionFrom: '',
+  sendMessageTitle: '',
+  sendMessagePath: '',
+  sendMessageImg: '',
+  appParameter: '',
+  showMessageCard: false,
+}
 
 Component({
   /**

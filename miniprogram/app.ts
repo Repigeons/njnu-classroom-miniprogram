@@ -1,5 +1,5 @@
 // app.ts
-import { getPortalSsoLogin } from './api/index'
+import { portalApi } from './apis'
 import {
   cachedCoreQueryClassroomsJson,
   cachedCoreQueryBuildingsJson,
@@ -21,13 +21,11 @@ App<IAppOption>({
     cachedExploreGridsJson(true)
     cachedExploreShuttleStationsJson(true)
     cachedCoreQueryZylxdmJson(true)
-
-    // ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", ""].forEach(day => getShuttle(day, true))
   },
 
   async login() {
     const res = await wx.login()
-    const resp = await getPortalSsoLogin({ jsCode: res.code })
+    const resp = await portalApi.login(res.code)
     await wx.setStorage({
       key: 'token',
       data: resp.token,

@@ -1,5 +1,5 @@
 // explore/index
-import { GetExploreGridsJsonResponse } from "../../../api/index"
+import { GridVo } from "../../../apis"
 import { cachedExploreGridsJson } from "../../../utils/cacheable"
 let interstitialAd: WechatMiniprogram.InterstitialAd
 
@@ -9,7 +9,7 @@ Page({
    */
   data: {
     fullYear: new Date().getFullYear(),
-    grids: [] as GetExploreGridsJsonResponse
+    grids: Array<GridVo>()
   },
 
   /**

@@ -6,8 +6,8 @@ Component({
   properties: {
     zylxdm: { type: String },
     jsmph: { type: String },
-    jcKs: { type: Number },
-    jcJs: { type: Number },
+    ksjc: { type: Number },
+    jsjc: { type: Number },
     skzws: { type: Number },
   },
 

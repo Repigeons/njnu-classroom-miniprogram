@@ -89,15 +89,15 @@ interface TimetableBar extends Record<string, any> {
   /**
    * 星期几
    */
-  readonly weekday: 'Sun' | 'Mon' | 'Tue' | 'Wed' | 'Thu' | 'Fri' | 'Sat'
+  readonly weekday: 'SUN' | 'MON' | 'TUE' | 'WED' | 'THU' | 'FRI' | 'SAT'
   /**
    * 开始节次
    */
-  readonly jcKs: number
+  readonly ksjc: number
   /**
    * 结束节次
    */
-  readonly jcJs: number
+  readonly jsjc: number
   /**
    * 资源类型代码
    */

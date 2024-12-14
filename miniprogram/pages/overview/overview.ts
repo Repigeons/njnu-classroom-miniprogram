@@ -1,13 +1,13 @@
 // overview
+import { ClassroomVo, coreApi } from '../../apis'
 import { cachedCoreQueryClassroomsJson } from '../../utils/cacheable'
 import { parseKcm, classDetailItem2dialog } from '../../utils/parser'
 import { getJc } from '../../utils/util'
-import { GetCoreQueryClassroomsJsonResponse, getCoreQueryOverview } from '../../api/index'
 
 Page({
   data: {
     // 选择教室
-    classrooms: [] as GetCoreQueryClassroomsJsonResponse,
+    classrooms: Array<ClassroomVo>(),
     jxlmcList: Array<string>(),
     jxlSelected: 0,
     jxlSelectedBackup: 0,
@@ -59,11 +59,11 @@ Page({
    * 预加载教室信息
    */
   async preloadInfo() {
-    const classrooms = await cachedCoreQueryClassroomsJson() as GetCoreQueryClassroomsJsonResponse
+    const classrooms = await cachedCoreQueryClassroomsJson() as ClassroomVo[]
     this.setData({
       classrooms: classrooms,
       jxlmcList: classrooms.map(jxl => jxl.jxlmc),
-      jsmphList: classrooms.map(jxl => jxl.list.map(jas => jas.jsmph)),
+      jsmphList: classrooms.map(jxl => jxl.list.map(jas => jas.jsmph!)),
     })
   },
   /**
@@ -188,17 +188,17 @@ Page({
       key: 'latestOverview',
       data: jas
     })
-    const result = await getCoreQueryOverview({ jasdm: jas.jasdm }) as Array<TimetableBar>
+    const result = await coreApi.getOverview(jas.jasdm) as TimetableBar[]
     console.debug("overview", result)
     let kcmclimit = 0
     const dayMapper: Record<string, number> = {
-      'Mon': 0,
-      'Tue': 1,
-      'Wed': 2,
-      'Thu': 3,
-      'Fri': 4,
-      'Sat': 5,
-      'Sun': 6,
+      'MON': 0,
+      'TUE': 1,
+      'WED': 2,
+      'THU': 3,
+      'FRI': 4,
+      'SAT': 5,
+      'SUN': 6,
     }
     for (let i = 0; i < result.length; i++) {
       const item = result[i]
@@ -216,8 +216,8 @@ Page({
           break;
       }
       if (dayMapper[item.weekday] + 1 === this.data.today) {
-        if (item.jcKs <= this.data.dqjc + 1)
-          if (item.jcJs >= this.data.dqjc + 1)
+        if (item.ksjc <= this.data.dqjc + 1)
+          if (item.jsjc >= this.data.dqjc + 1)
             this.setData({ idle: item.zylxdm === '00' })
       }
       item.left = dayMapper[item.weekday]
@@ -226,7 +226,7 @@ Page({
       for (const k in info) {
         item[k] = info[k]
       }
-      kcmclimit = (this.data.cell.height * (item.jcJs - item.jcKs + 1)) / (this.data.cell.width * this.data.cell.ratio / 3 * 1.3) * 3
+      kcmclimit = (this.data.cell.height * (item.jsjc - item.ksjc + 1)) / (this.data.cell.width * this.data.cell.ratio / 3 * 1.3) * 3
       const title = item.title as string
       item.shortkcmc = title.length > kcmclimit ? title.substring(0, kcmclimit - 3) + '...' : item.title
     }

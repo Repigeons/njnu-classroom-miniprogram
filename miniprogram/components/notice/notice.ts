@@ -1,5 +1,6 @@
 // components/notice/notice.ts
-import { getPortalNotice } from "../../api/index"
+
+import { portalApi } from "../../apis"
 
 Component({
   /**
@@ -32,7 +33,7 @@ Component({
           tap: () => this.close()
         }]
       })
-      const { timestamp, date, text } = await getPortalNotice()
+      const { timestamp, date, text } = await portalApi.getNotice()
       const notice = wx.getStorageSync('notice') as number
       this.setData({
         timestamp: (timestamp <= notice) ? 0 : timestamp,

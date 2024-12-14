@@ -1,4 +1,3 @@
-import { GetCoreQueryBuildingsJsonResponse, GetExploreShuttleStationsJsonResponse } from "../../../../api/index"
 import { cachedCoreQueryBuildingsJson, cachedExploreShuttleStationsJson } from "../../../../utils/cacheable"
 
 // pages/explore/pages/map/map.ts
@@ -37,7 +36,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   async preloadInfo() {
-    const getCoreQueryBuildingsJsonResponse = await cachedCoreQueryBuildingsJson() as GetCoreQueryBuildingsJsonResponse
+    const getCoreQueryBuildingsJsonResponse = await cachedCoreQueryBuildingsJson() 
     const jxlPosition: Array<IPosition> = getCoreQueryBuildingsJsonResponse.map(it => ({
       name: it.name,
       position: {

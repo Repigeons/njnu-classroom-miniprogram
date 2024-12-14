@@ -1,5 +1,6 @@
 // components/class-detail/class-detail.ts
-import { postExploreUserFavorites, PostExploreUserFavoritesRequest } from "../../api/index"
+
+import { exploreApi, UserFavoritesDto } from "../../apis"
 
 Component({
   /**
@@ -34,8 +35,8 @@ Component({
         }, {
           text: '添加到收藏',
           tap: async () => {
-            const dto = this.data.dto as PostExploreUserFavoritesRequest
-            await postExploreUserFavorites(dto)
+            const dto = this.data.dto as UserFavoritesDto
+            await exploreApi.saveFavorites(dto)
             wx.showToast({ title: '添加收藏成功' })
             this.setData({ title: '' })
           }

@@ -96,7 +96,7 @@ export function classDetailItem2dialog(item: Record<string, any>): TimetableDeta
     value: string;
   }> = [{
     field: item.usage === 'empty' ? '空闲时间' : '使用时间',
-    value: `${weekday ? weekday : ''}${item.jcKs}-${item.jcJs}节`
+    value: `${weekday ? weekday : ''}${item.ksjc}-${item.jsjc}节`
   }]
   if (item.KCMC) detail.push({ field: '课程名称', value: item.KCMC })
   if (item.SKJS) detail.push({ field: '上课教师', value: item.SKJS })
@@ -115,8 +115,8 @@ export function classDetailItem2dialog(item: Record<string, any>): TimetableDeta
     remark,
     title: item.title,
     weekday: item.weekday,
-    jcKs: item.jcKs,
-    jcJs: item.jcJs,
+    ksjc: item.ksjc,
+    jsjc: item.jsjc,
     place: `${item.jxlmc}${item.jsmph}`,
     color: item.usage === 'empty'
       ? '#ace5ac' : item.usage === 'class'

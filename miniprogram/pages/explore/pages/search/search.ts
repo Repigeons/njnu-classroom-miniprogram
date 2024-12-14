@@ -1,6 +1,5 @@
 // explore/search
 import { weekdays } from "../../../../utils/constant"
-import { GetCoreQueryClassroomsJsonResponse, getCoreQuerySearch, GetCoreQueryZylxdmJsonResponse } from "../../../../api/index"
 import { cachedCoreQueryClassroomsJson, cachedCoreQueryZylxdmJson } from "../../../../utils/cacheable"
 import { classDetailItem2dialog, parseKcm } from "../../../../utils/parser"
 
@@ -20,8 +19,8 @@ Page({
     rqMapper: Object() as Record<string, string>,
     rqSelected: 0,
     jcArray: ['第1节', '第2节', '第3节', '第4节', '第5节', '第6节', '第7节', '第8节', '第9节', '第10节', '第11节', '第12节'],
-    jcKsSelected: 0,
-    jcJsSelected: 11,
+    ksjcSelected: 0,
+    jsjcSelected: 11,
     zylxdmArray: [{ key: '', value: "不限" }] as Array<KeyValue<string>>,
     zylxdmSelected: 0,
     // 结果
@@ -39,13 +38,13 @@ Page({
     this.preloadInfo().then(() => {
       // 
       if (options.page === 'search') {
-        const { keyword, jxlSelected, rqSelected, jcKsSelected, jcJsSelected, zylxdmSelected } = options
+        const { keyword, jxlSelected, rqSelected, ksjcSelected, jsjcSelected, zylxdmSelected } = options
         this.setData({
           keyword: keyword ? keyword : '',
           jxlSelected: jxlSelected ? Number(jxlSelected) : 0,
           rqSelected: rqSelected ? Number(rqSelected) : 0,
-          jcKsSelected: jcKsSelected ? Number(jcKsSelected) : 0,
-          jcJsSelected: jcJsSelected ? Number(jcJsSelected) : 11,
+          ksjcSelected: ksjcSelected ? Number(ksjcSelected) : 0,
+          jsjcSelected: jsjcSelected ? Number(jsjcSelected) : 11,
           zylxdmSelected: zylxdmSelected ? Number(zylxdmSelected) : 0,
         })
         this.submit()
@@ -89,11 +88,11 @@ Page({
     data[e.target.dataset.jc] = e.detail.value
     this.setData(data)
 
-    const { jcKsSelected, jcJsSelected } = this.data
-    if (jcKsSelected > jcJsSelected) {
+    const { ksjcSelected, jsjcSelected } = this.data
+    if (ksjcSelected > jsjcSelected) {
       this.setData({
-        jcKsSelected: jcJsSelected,
-        jcJsSelected: jcKsSelected,
+        ksjcSelected: jsjcSelected,
+        jsjcSelected: ksjcSelected,
       })
     }
   },
@@ -119,8 +118,8 @@ Page({
     try {
       const res = await getCoreQuerySearch({
         weekday: this.data.rqArray[this.data.rqSelected].key,
-        jcKs: `${this.data.jcKsSelected + 1}`,
-        jcJs: `${this.data.jcJsSelected + 1}`,
+        ksjc: `${this.data.ksjcSelected + 1}`,
+        jsjc: `${this.data.jsjcSelected + 1}`,
         jxlmc: this.data.jxlArray[this.data.jxlSelected].key,
         zylxdm: this.data.zylxdmArray[this.data.zylxdmSelected].key,
         keyword: this.data.keyword,
@@ -172,8 +171,8 @@ Page({
         + `&keyword=${this.data.keyword}`
         + `&jxlSelected=${this.data.jxlSelected}`
         + `&rqSelected=${this.data.rqSelected}`
-        + `&jcKsSelected=${this.data.jcKsSelected}`
-        + `&jcJsSelected=${this.data.jcJsSelected}`
+        + `&ksjcSelected=${this.data.ksjcSelected}`
+        + `&jsjcSelected=${this.data.jsjcSelected}`
         + `&zylxdmSelected=${this.data.zylxdmSelected}`,
       image: 'images/logo.png'
     }

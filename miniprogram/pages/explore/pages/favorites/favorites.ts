@@ -1,6 +1,6 @@
 // favorites
+import { exploreApi } from '../../../../apis'
 import { userFavoritesItem2dialog } from '../../../../utils/parser'
-import { getExploreUserFavorites } from '../../../../api/index'
 import { getJc } from '../../../../utils/util'
 
 Page({
@@ -44,28 +44,28 @@ Page({
    * 查询用户收藏
    */
   async onShow() {
-    const result = await getExploreUserFavorites() as Array<TimetableBar>
+    const result = await exploreApi.getFavorites()
     console.debug('favorites', result)
     let kcmclimit = 0
     const dayMapper: Record<string, number> = {
-      'Mon': 0,
-      'Tue': 1,
-      'Wed': 2,
-      'Thu': 3,
-      'Fri': 4,
-      'Sat': 5,
-      'Sun': 6,
+      'MON': 0,
+      'TUE': 1,
+      'WED': 2,
+      'THU': 3,
+      'FRI': 4,
+      'SAT': 5,
+      'SUN': 6,
     }
     for (let i = 0; i < result.length; i++) {
-      const item = result[i]
+      const item = result[i] as TimetableBar
       this.setData({ idle: true })
       if (dayMapper[item.weekday] + 1 === this.data.today) {
-        if (item.jcKs <= this.data.dqjc + 1)
-          if (item.jcJs >= this.data.dqjc + 1)
+        if (item.ksjc <= this.data.dqjc + 1)
+          if (item.jsjc >= this.data.dqjc + 1)
             this.setData({ idle: false })
       }
       item.left = dayMapper[item.weekday]
-      kcmclimit = (this.data.cell.height * (item.jcJs - item.jcKs + 1)) / (this.data.cell.width * this.data.cell.ratio / 3 * 1.3) * 3
+      kcmclimit = (this.data.cell.height * (item.jsjc - item.ksjc + 1)) / (this.data.cell.width * this.data.cell.ratio / 3 * 1.3) * 3
       const title = item.title as string
       item.shortkcmc = title.length > kcmclimit ? title.substring(0, kcmclimit - 3) + '...' : item.title
     }

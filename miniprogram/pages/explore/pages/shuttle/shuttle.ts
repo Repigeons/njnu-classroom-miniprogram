@@ -2,7 +2,6 @@
 import { getDistance } from '../../../../utils/util'
 import { parseTime } from "../../../../utils/parser"
 import { cachedExploreShuttleStationsJson } from '../../../../utils/cacheable'
-import { getExploreShuttleGetRoutes, GetExploreShuttleStationsJsonResponse, postExploreShuttleUploadImage } from '../../../../api/index'
 //@ts-ignore
 import { FileData } from '../../../../api/yapi-to-typescript'
 import { weekdays } from '../../../../utils/constant'
