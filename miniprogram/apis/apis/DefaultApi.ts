@@ -12,7 +12,6 @@
  * Do not edit the class manually.
  */
 
-
 import * as runtime from '../runtime';
 import {
     ClassroomVo,
@@ -64,21 +63,21 @@ import {
 
 export interface DeleteFavoritesRequest {
     id: string;
-    }
+}
 
 export interface FeedbackEmptyClassroomRequest {
     emptyClassroomFeedbackDto?: EmptyClassroomFeedbackDto;
-    }
+}
 
 export interface GetEmptyRequest {
     jxlmc: string;
     weekday: string;
     jc: string;
-    }
+}
 
 export interface GetOverviewRequest {
     jasdm: string;
-    }
+}
 
 export interface GetSearchRequest {
     ksjc: number;
@@ -89,39 +88,39 @@ export interface GetSearchRequest {
     weekday?: GetSearchWeekdayEnum;
     page?: number;
     size?: number;
-    }
+}
 
 export interface GetShuttleRequest {
     weekday: GetShuttleWeekdayEnum;
-    }
+}
 
 export interface LoginRequest {
     code: string;
-    }
+}
 
 export interface PutNoticeRequest {
     text: string;
-    }
+}
 
 export interface SaveFavoritesRequest {
     userFavoritesDto?: UserFavoritesDto;
-    }
+}
 
 export interface SetNoticeRequest {
     id: string;
-    }
+}
 
 export interface SetServiceSwitchRequest {
     value: boolean;
-    }
+}
 
 export interface Token2openidRequest {
     authorization: string;
-    }
+}
 
 export interface UploadShuttleImageRequest {
     inlineObject?: InlineObject;
-    }
+}
 
 /**
  * 

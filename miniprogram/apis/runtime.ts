@@ -15,7 +15,6 @@
 
 export interface Response {
   statusCode: number;
-  header: TaroGeneral.IAnyObject;
   data: any;
 }
 

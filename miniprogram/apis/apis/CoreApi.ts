@@ -12,7 +12,6 @@
  * Do not edit the class manually.
  */
 
-
 import * as runtime from '../runtime';
 import {
     ClassroomVo,
@@ -37,17 +36,17 @@ import {
 
 export interface FeedbackEmptyClassroomRequest {
     emptyClassroomFeedbackDto?: EmptyClassroomFeedbackDto;
-    }
+}
 
 export interface GetEmptyRequest {
     jxlmc: string;
     weekday: string;
     jc: string;
-    }
+}
 
 export interface GetOverviewRequest {
     jasdm: string;
-    }
+}
 
 export interface GetSearchRequest {
     ksjc: number;
@@ -58,7 +57,7 @@ export interface GetSearchRequest {
     weekday?: GetSearchWeekdayEnum;
     page?: number;
     size?: number;
-    }
+}
 
 /**
  * 
@@ -188,7 +187,6 @@ export class CoreApi extends runtime.BaseAPI {
      * 教室列表
      */
     async getClassroomList(): Promise<Array<ClassroomVo>> {
-        console.warn(this)
         const response = await this.getClassroomListRaw();
         return await response.value();
     }

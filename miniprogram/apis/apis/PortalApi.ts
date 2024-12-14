@@ -12,7 +12,6 @@
  * Do not edit the class manually.
  */
 
-
 import * as runtime from '../runtime';
 import {
     LoginVo,
@@ -28,23 +27,23 @@ import {
 
 export interface LoginRequest {
     code: string;
-    }
+}
 
 export interface PutNoticeRequest {
     text: string;
-    }
+}
 
 export interface SetNoticeRequest {
     id: string;
-    }
+}
 
 export interface SetServiceSwitchRequest {
     value: boolean;
-    }
+}
 
 export interface Token2openidRequest {
     authorization: string;
-    }
+}
 
 /**
  * 

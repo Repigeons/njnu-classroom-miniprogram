@@ -1,7 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
 {{>licenseInfo}}
-
 import * as runtime from '../runtime';
 {{#imports.0}}
 import {
@@ -20,7 +19,7 @@ export interface {{#prefixParameterInterfaces}}{{classname}}{{/prefixParameterIn
     {{#allParams}}
     {{paramName}}{{^required}}?{{/required}}: {{#isEnum}}{{{datatypeWithEnum}}}{{/isEnum}}{{^isEnum}}{{{dataType}}}{{#isNullable}} | null{{/isNullable}}{{/isEnum}};
     {{/allParams}}
-    }
+}
 
 {{/allParams.0}}
 {{/operation}}

@@ -12,7 +12,6 @@
  * Do not edit the class manually.
  */
 
-
 import * as runtime from '../runtime';
 import {
     GridVo,
@@ -40,19 +39,19 @@ import {
 
 export interface DeleteFavoritesRequest {
     id: string;
-    }
+}
 
 export interface GetShuttleRequest {
     weekday: GetShuttleWeekdayEnum;
-    }
+}
 
 export interface SaveFavoritesRequest {
     userFavoritesDto?: UserFavoritesDto;
-    }
+}
 
 export interface UploadShuttleImageRequest {
     inlineObject?: InlineObject;
-    }
+}
 
 /**
  * 

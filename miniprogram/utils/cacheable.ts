@@ -29,34 +29,34 @@ async function cacheable<TResponseData>(args: { cacheName?: string, func: () => 
  * 教室列表
  */
 export const cachedCoreQueryClassroomsJson = (request: boolean = false) => cacheable({
-  func: coreApi.getClassroomList,
+  func: () => coreApi.getClassroomList(),
   request
 })
 /**
  * 教学楼位置
  */
 export const cachedCoreQueryBuildingsJson = (request: boolean = false) => cacheable({
-  func: coreApi.getJxlPosition,
+  func: () => coreApi.getJxlPosition(),
   request
 })
 /**
  * 资源类型代码
  */
 export const cachedCoreQueryZylxdmJson = (request: boolean = false) => cacheable({
-  func: coreApi.getZylxdm,
+  func: () => coreApi.getZylxdm(),
   request
 })
 /**
  * 发现栏列表
  */
 export const cachedExploreGridsJson = (request: boolean = false) => cacheable({
-  func: exploreApi.getGrids,
+  func: () => exploreApi.getGrids(),
   request
 })
 /**
  * 校车时刻表
  */
 export const cachedExploreShuttleStationsJson = (request: boolean = false) => cacheable({
-  func: exploreApi.getStations,
+  func: () => exploreApi.getStations(),
   request
 })
